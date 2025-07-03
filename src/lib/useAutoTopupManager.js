@@ -108,6 +108,18 @@ export function useAutoTopupManager() {
         try {
           await switchChain(wagmiConfig, { chainId: result.chainId });
           setLog(`Switched to chain ${result.chainId} for refill.`);
+          // Tunggu wallet benar-benar sudah di chain yang benar
+          let maxWait = 10; // max 10x cek (sekitar 2 detik)
+          let client = walletClient;
+          while (client.chain.id !== result.chainId && maxWait-- > 0) {
+            await new Promise(res => setTimeout(res, 200));
+            client = await getWalletClient(wagmiConfig);
+          }
+          if (client.chain.id !== result.chainId) {
+            setLog(`❌ Wallet gagal pindah ke chain ${result.chainId}`);
+            setIsWaitingApproval(false);
+            return;
+          }
         } catch (e) {
           setLog(`❌ Failed to switch chain: ${e.message}`);
           setIsWaitingApproval(false);
