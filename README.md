@@ -1,7 +1,5 @@
 # TrustFill - Automated USDC Balance Manager
 
-![TrustFill Logo](https://trust-fill.vercel.app/logo.png)
-
 🔗 **Live Demo:** [https://trust-fill.vercel.app](https://trust-fill.vercel.app)
 
 ---
