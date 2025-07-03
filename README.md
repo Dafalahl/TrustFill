@@ -51,6 +51,15 @@ Designed for DeFi users and crypto enthusiasts, TrustFill eliminates the need fo
 - Web3 wallet (e.g., MetaMask, Rainbow)
 - USDC balance on supported source chains
 - Testnet ETH (for Sepolia testnet operations)
+- Need test tokens to try TrustFill on testnets? Use the following faucets:
+   - 💵 **USDC Testnet (Circle Faucet):**  
+     https://faucet.circle.com
+
+   - 🛠️ **Ethereum Sepolia Faucet:**  
+     https://cloud.google.com/application/web3/faucet/ethereum/sepolia
+
+   - ❄️ **Avalanche Fuji Faucet:**  
+     https://core.app/tools/testnet-faucet/?subnet=c&token=c
 
 ### Installation
 
