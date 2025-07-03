@@ -199,12 +199,14 @@ export function useAutoTopupManager() {
     const { RPC_URLS } = await import('./tokenmap');
     const chains = Object.keys(RPC_URLS).map(Number);
 
+    // Prioritaskan chain saat ini, tapi JANGAN PERNAH gunakan chain tujuan
     const prioritizedChains = [
       currentChainId,
-      ...chains.filter((id) => id !== currentChainId),
-    ];
+      ...chains.filter((id) => id !== currentChainId && id !== destinationChain),
+    ].filter((id, idx, arr) => id !== destinationChain && arr.indexOf(id) === idx); // pastikan tidak ada duplikat dan tidak sama dengan tujuan
 
     for (const chainId of prioritizedChains) {
+      if (chainId === destinationChain) continue; // skip jika chain sumber sama dengan tujuan
       const rpcUrl = RPC_URLS[chainId];
       if (!rpcUrl) continue;
 
